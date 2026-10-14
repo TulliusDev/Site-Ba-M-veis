@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f7f6f3">
+    <meta name="robots" content="noindex, nofollow">
     <title>Baú Móveis | Seu espaço, do seu jeito</title>
     <meta name="description" content="Móveis planejados sob medida para ambientes residenciais e comerciais. Conheça os projetos da Baú Móveis e solicite um orçamento pelo WhatsApp.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Baú Móveis | Seu espaço, do seu jeito">
     <meta property="og:description" content="Projetos sob medida para ambientes residenciais e comerciais, combinando estilo, funcionalidade e aproveitamento de espaço.">
-    <meta property="og:image" content="imagens_servico/image 3.jpg">
+    <meta property="og:image" content="imagens_servico/image8.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -17,6 +18,7 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <div class="demo-banner" role="note">DEMONSTRAÇÃO COMERCIAL — Este site ainda não é oficial</div>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="site-header">
@@ -42,7 +44,7 @@
 
     <main id="conteudo">
       <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <img class="hero-image" src="imagens_servico/image 3.jpg" alt="Cozinha planejada com armários de madeira e bancada escura" fetchpriority="high">
+        <img class="hero-image" src="imagens_servico/image8.jpg" alt="Cozinha planejada com armários claros e bancada escura" width="680" height="510" fetchpriority="high" decoding="async">
         <div class="hero-shade"></div>
         <div class="container hero-content">
           <p class="eyebrow hero-eyebrow"><span></span> Baú Móveis · sob medida</p>
@@ -67,7 +69,7 @@
             <p class="section-intro">Conheça alguns trabalhos da Baú Móveis e descubra possibilidades para transformar seus ambientes.</p>
           </div>
           <div class="filter-list reveal" role="group" aria-label="Filtrar projetos">
-            <button class="filter-button is-active" type="button" data-filter="todos" aria-pressed="true">Todos <span>06</span></button>
+            <button class="filter-button is-active" type="button" data-filter="todos" aria-pressed="true">Todos <span>09</span></button>
             <button class="filter-button" type="button" data-filter="cozinhas" aria-pressed="false">Cozinhas</button>
             <button class="filter-button" type="button" data-filter="banheiros" aria-pressed="false">Banheiros</button>
             <button class="filter-button" type="button" data-filter="guarda-roupas" aria-pressed="false">Guarda-roupas</button>
@@ -92,7 +94,7 @@
             </ul>
           </div>
           <figure class="about-visual reveal">
-            <img src="imagens_servico/unnamed.jpg" alt="Sala de estar com painel de TV e mobiliário planejado" loading="lazy">
+            <img src="imagens_servico/image10.jpg" alt="Recepção comercial com balcão e móveis planejados" width="680" height="510" loading="lazy" decoding="async">
             <figcaption><span>Espaços com intenção.</span><span>Baú Móveis · sob medida</span></figcaption>
             <span class="visual-stamp" aria-hidden="true">Seu espaço,<br>do seu jeito.</span>
           </figure>
@@ -132,7 +134,7 @@
           <div class="quote-copy reveal">
             <p class="eyebrow"><span></span> Vamos conversar</p>
             <h2 id="quote-title">Vamos planejar seu próximo ambiente?</h2>
-            <p>Conte um pouco sobre o que você precisa e envie sua solicitação diretamente para a Baú Móveis pelo WhatsApp.</p>
+            <p id="quote-intro">Conte um pouco sobre o que você precisa e envie sua solicitação diretamente para a Baú Móveis pelo WhatsApp.</p>
             <div class="quote-contact">
               <span class="contact-icon" aria-hidden="true">↗</span>
               <span><small>Fale com a gente</small><strong id="contact-phone"></strong></span>
@@ -171,7 +173,8 @@
               <textarea id="description" name="description" rows="4" placeholder="O que você tem em mente?"></textarea>
             </div>
             <button class="button button-primary form-submit" type="submit">Enviar orçamento pelo WhatsApp <span aria-hidden="true">↗</span></button>
-            <p class="form-privacy">Sua mensagem será preparada no WhatsApp. Você poderá revisar e confirmar o envio por lá.</p>
+            <p class="form-privacy" id="form-privacy">Sua mensagem será preparada no WhatsApp. Você poderá revisar e confirmar o envio por lá.</p>
+            <p class="form-message" id="form-message" role="status" hidden></p>
             <p class="form-error" id="form-error" role="alert" hidden></p>
           </form>
         </div>
@@ -198,7 +201,7 @@
         </div>
         <div class="footer-mark" aria-hidden="true">BM<span>.</span></div>
       </div>
-      <div class="container footer-bottom"><span>© <span id="year"></span> Baú Móveis</span><span>Seu espaço, do seu jeito.</span><a href="#inicio">Voltar ao topo ↑</a></div>
+      <div class="container footer-bottom"><span>© <span id="year"></span> Baú Móveis</span><span>Seu espaço, do seu jeito.</span><a href="#inicio">Voltar ao topo ↑</a><span class="demo-credit">Projeto demonstrativo desenvolvido por TulliusDev. Uso comercial sujeito a contratação</span></div>
     </footer>
 
     <dialog class="lightbox" id="lightbox" aria-label="Visualização ampliada do projeto">

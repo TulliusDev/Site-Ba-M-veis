@@ -1,16 +1,22 @@
 const company = {
   whatsapp: "5531986969877",
   phoneDisplay: "+55 31 98696-9877",
-  instagram: "https://www.instagram.com/baudosmoveis/"
+  instagram: "https://www.instagram.com/baudosmoveis/",
+  // Mude para false após a contratação para reativar o envio pelo WhatsApp.
+  demoMode: true,
+  demoMessage: "Este formulário é apenas demonstrativo. O envio de orçamentos será ativado na versão final, após a contratação."
 };
 
 const projects = [
-  { title: "Cozinha planejada", category: "cozinhas", image: "imagens_servico/image 3.jpg", alt: "Cozinha planejada com armários de madeira e bancada escura" },
-  { title: "Cozinha sob medida", category: "cozinhas", image: "imagens_servico/image2.jpg", alt: "Cozinha planejada com armários cinza e bancada escura" },
-  { title: "Bancada para banheiro", category: "banheiros", image: "imagens_servico/image4.jpg", alt: "Gabinete sob medida com cuba de apoio para banheiro" },
-  { title: "Armário planejado", category: "guarda-roupas", image: "imagens_servico/image6.jpg", alt: "Montador instalando portas de um armário planejado" },
-  { title: "Closet sob medida", category: "guarda-roupas", image: "imagens_servico/image5.jpg", alt: "Closet planejado com nichos, gavetas e espaço para roupas" },
-  { title: "Painel e sala de estar", category: "outros", image: "imagens_servico/unnamed.jpg", alt: "Sala de estar com painel de TV e móveis planejados" }
+  { title: "Cozinha planejada", category: "cozinhas", image: "imagens_servico/image9.jpg", alt: "Armários planejados e bancada em uma cozinha", width: 680, height: 510, layout: "featured" },
+  { title: "Ambiente comercial", category: "comerciais", image: "imagens_servico/image10.jpg", alt: "Recepção comercial com balcão e móveis planejados", width: 680, height: 510, layout: "featured" },
+  { title: "Cozinha sob medida", category: "cozinhas", image: "imagens_servico/image 3.jpg", alt: "Cozinha planejada com armários de madeira e bancada escura", width: 680, height: 298 },
+  { title: "Bancada para banheiro", category: "banheiros", image: "imagens_servico/image4.jpg", alt: "Gabinete sob medida com cuba de apoio para banheiro", width: 382, height: 510 },
+  { title: "Closet sob medida", category: "guarda-roupas", image: "imagens_servico/image5.jpg", alt: "Closet planejado com nichos, gavetas e espaço para roupas", width: 407, height: 510 },
+  { title: "Armário planejado", category: "guarda-roupas", image: "imagens_servico/image7.jpg", alt: "Armário planejado com portas e nicho para televisão", width: 382, height: 510 },
+  { title: "Cozinha planejada", category: "cozinhas", image: "imagens_servico/image2.jpg", alt: "Cozinha planejada com armários cinza e bancada escura", width: 224, height: 510, layout: "compact" },
+  { title: "Sala de estar planejada", category: "outros", image: "imagens_servico/unnamed.jpg", alt: "Sala de estar com painel de TV e móveis planejados", width: 382, height: 510 },
+  { title: "Cozinha planejada", category: "cozinhas", image: "imagens_servico/image6.jpg", alt: "Montador instalando portas de um armário planejado", width: 223, height: 510, layout: "compact" }
 ];
 
 const projectGrid = document.querySelector("#project-grid");
@@ -36,7 +42,7 @@ function renderProjects(filter = "todos") {
 
   visibleProjects.forEach((project, index) => {
     const article = document.createElement("article");
-    article.className = "project-card";
+    article.className = `project-card${project.layout ? ` project-card--${project.layout}` : ""}`;
     const button = document.createElement("button");
     button.className = "project-open";
     button.type = "button";
@@ -45,9 +51,12 @@ function renderProjects(filter = "todos") {
 
     const imageWrap = document.createElement("span");
     imageWrap.className = "project-image-wrap";
+    imageWrap.style.aspectRatio = `${project.width} / ${project.height}`;
     const image = document.createElement("img");
     image.src = project.image;
     image.alt = project.alt;
+    image.width = project.width;
+    image.height = project.height;
     image.loading = "lazy";
     image.decoding = "async";
     const viewIcon = document.createElement("span");
@@ -140,9 +149,17 @@ document.querySelector("#quote-form").addEventListener("submit", (event) => {
   event.preventDefault();
   const form = event.currentTarget;
   const error = document.querySelector("#form-error");
+  const messageNotice = document.querySelector("#form-message");
   error.hidden = true;
+  messageNotice.hidden = true;
 
   if (!form.reportValidity()) return;
+
+  if (company.demoMode) {
+    messageNotice.textContent = company.demoMessage;
+    messageNotice.hidden = false;
+    return;
+  }
 
   const formData = new FormData(form);
   const message = [
@@ -169,6 +186,10 @@ document.querySelector("#year").textContent = new Date().getFullYear();
 document.querySelector("#contact-phone").textContent = company.phoneDisplay;
 document.querySelector("#instagram-link").href = company.instagram;
 document.querySelector("#whatsapp-link").href = `https://wa.me/${company.whatsapp}`;
+if (company.demoMode) {
+  document.querySelector("#quote-intro").textContent = "Conte um pouco sobre o que você precisa. O formulário está em modo demonstrativo e não envia seus dados.";
+  document.querySelector("#form-privacy").textContent = company.demoMessage;
+}
 
 const revealElements = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
